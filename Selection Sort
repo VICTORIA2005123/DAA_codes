@@ -1,0 +1,14 @@
+##Selection sort
+def ss(arr):
+    n = len(arr)
+    for i in range(n):
+        min_idx = i
+        for j in range(i+1, n):
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+
+# Example usage
+arr = list(map(int, input("Array:").split()))
+ss(arr)
+print("Sorted array:", arr)
