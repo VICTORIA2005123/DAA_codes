@@ -1,0 +1,13 @@
+#Linear search        
+def ls(arr, target):
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i  # Return index if found
+    return -1  # Return -1 if not found
+
+# Example usage
+arr = [10, 20, 30, 40, 50]
+target = 30
+result = ls(arr, target)
+
+print("Element at index:", result if result != -1 else "Not found")
