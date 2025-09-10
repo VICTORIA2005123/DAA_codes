@@ -1,0 +1,13 @@
+#Making Coin change
+def makingcoinchange(Coins,amount):
+    mcm=[float('inf')]*(amount+1)
+    mcm[0]=0
+
+    for coin in coins:
+        for i in range(coin,amount+1):
+            mcm[i]=min(mcm[i],1+mcm[i-coin])
+    return mcm[amount]
+
+Coins=[1,5,6,8]
+amount=11
+makingcoinchange(Coins,amount)
