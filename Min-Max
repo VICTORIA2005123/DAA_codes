@@ -1,0 +1,29 @@
+def min_max_sort(arr):
+    start, end = 0, len(arr) - 1
+    while start < end:
+        # find min and max in the unsorted part
+        min_index = start
+        max_index = start
+        for i in range(start, end + 1):
+            if arr[i] < arr[min_index]:
+                min_index = i
+            if arr[i] > arr[max_index]:
+                max_index = i
+
+        # swap min to the front
+        arr[start], arr[min_index] = arr[min_index], arr[start]
+
+        # if max was at start, it moved to min_index now
+        if max_index == start:
+            max_index = min_index
+
+        # swap max to the end
+        arr[end], arr[max_index] = arr[max_index], arr[end]
+
+        start += 1
+        end -= 1
+
+# Example usage:
+arr = [5, 1, 4, 2, 8, 3]
+min_max_sort(arr)
+print("Sorted array:", arr)
