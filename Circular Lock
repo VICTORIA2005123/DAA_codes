@@ -1,0 +1,21 @@
+# Circular Lock 
+class CircularLock:
+    def __init__(self, combination):
+        self.combination = combination  # e.g. [3, 7, 5]
+        self.current = [0] * len(combination)
+
+    def rotate(self, wheel, steps):
+        # wheel index starts at 0, steps can be + or -
+        self.current[wheel] = (self.current[wheel] + steps) % 10
+
+    def is_unlocked(self):
+        return self.current == self.combination
+
+# Example usage
+lock = CircularLock([3, 7, 5])
+lock.rotate(0, 3)  # wheel 0 -> 3
+lock.rotate(1, 7)  # wheel 1 -> 7
+lock.rotate(2, 5)  # wheel 2 -> 5
+
+print("Current:", lock.current)
+print("Unlocked?", lock.is_unlocked())
