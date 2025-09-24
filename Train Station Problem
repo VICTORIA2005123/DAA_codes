@@ -1,0 +1,29 @@
+
+
+
+# Train Station Problem: Minimum Platforms Required
+
+arrival = [900, 940, 950, 1100, 1500, 1800]   # arrival times
+departure = [910, 1200, 1120, 1130, 1900, 2000]  # departure times
+
+# Sort both lists
+arrival.sort()
+departure.sort()
+
+n = len(arrival)
+platforms_needed = 1
+result = 1
+i, j = 1, 0  # i -> arrival index, j -> departure index
+
+while i < n and j < n:
+    if arrival[i] <= departure[j]:  # next train arrives before last departs
+        platforms_needed += 1
+        result = max(result, platforms_needed)
+        i += 1
+    else:  # a train departed
+        platforms_needed -= 1
+        j += 1
+
+print("Minimum number of platforms required:", result)
+
+
