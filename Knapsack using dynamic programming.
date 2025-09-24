@@ -1,0 +1,20 @@
+
+#knapsack using dynamic programming. 
+def knapsack(W, wt, val, n):
+    dp = [0] * (W + 1)
+
+    for i in range(n):
+        for w in range(W, wt[i] - 1, -1):  # go backwards to avoid reuse
+            dp[w] = max(dp[w], val[i] + dp[w - wt[i]])
+
+    return dp[W]
+
+# Example usage
+val = [60, 100, 120]   # values
+wt = [10, 20, 30]      # weights
+W = 50                 # capacity
+n = len(val)
+
+print("Maximum value:", knapsack(W, wt, val, n))
+
+
