@@ -1,0 +1,11 @@
+#Power Divide and Conquer O(N)
+def power(x, n):
+    if n == 0:
+        return 1
+    if n == 1:
+        return x
+    # Divide into two parts but still ends up O(N)
+    return power(x, n - 1) * x
+
+# Example usage
+print(power(4, 5))  
