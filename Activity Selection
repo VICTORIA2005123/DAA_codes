@@ -1,0 +1,20 @@
+def activity_selection(start, finish):
+    # Pair activities and sort by finish time
+    activities = sorted(zip(start, finish), key=lambda x: x[1])
+
+    selected = []
+    last_end = -1
+
+    for s, f in activities:
+        if s >= last_end:
+            selected.append((s, f))
+            last_end = f
+
+    return selected
+
+
+start_times  = [1, 3, 0, 5, 8, 5]
+finish_times = [2, 4, 6, 7, 9, 9]
+
+chosen = activity_selection(start_times, finish_times)
+print("Selected activities:", chosen)
