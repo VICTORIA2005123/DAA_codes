@@ -1,0 +1,21 @@
+from collections import deque
+
+def bfs(graph, start):
+    visited = set([start])
+    queue = deque([start])
+    order = []
+
+    while queue:
+        node = queue.popleft()
+        order.append(node)
+
+        for nei in graph[node]:
+            if nei not in visited:
+                visited.add(nei)
+                queue.append(nei)
+
+    return order
+
+# Example
+graph = {0:[1,2], 1:[2], 2:[0,3], 3:[3]}
+print(bfs(graph, 2))   # Output: [2, 0, 3, 1]
