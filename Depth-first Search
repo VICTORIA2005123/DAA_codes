@@ -1,0 +1,14 @@
+def dfs(graph, start, visited=None, order=None):
+    if visited is None: visited = set()
+    if order is None: order = []
+
+    visited.add(start)
+    order.append(start)
+
+    for nei in graph[start]:
+        if nei not in visited:
+            dfs(graph, nei, visited, order)
+
+    return order
+
+print(dfs(graph, 2))   # Output: [2, 0, 1, 3]
