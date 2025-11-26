@@ -1,0 +1,17 @@
+def fractional_knapsack(W, weights, values):
+    # Compute value-to-weight ratio
+    items = sorted(zip(weights, values), key=lambda x: x[1]/x[0], reverse=True)
+
+    total_value = 0.0
+
+    for w, v in items:
+        if W == 0:
+            break
+        if w <= W:
+            total_value += v
+            W -= w
+        else:
+            total_value += v * (W / w)  
+            W = 0
+
+    return total_value
